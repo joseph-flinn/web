@@ -1,0 +1,26 @@
+name: Deploy
+
+on: 
+  workflow_dispatch:
+    inputs: {}
+  release:
+    types:
+      - published
+
+
+jobs:
+  deploy:
+    name: Deploy Web Vault
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          ref: heads/rc
+
+      - name: install dependencies
+        run: npm install
+
+      - name: deploy GitHub Pages
+        run: npm run deploy
+
