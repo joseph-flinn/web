@@ -50,7 +50,7 @@ jobs:
           if [[ "$set_version" != "$" ]]; then
             echo "Mismatched Release version"
             echo "package.json: $set_version"
-            echo "release: $env.RELEASE_NAME"
+            echo "release: $RELEASE_NAME"
             exit 1
           fi
 
