@@ -16,7 +16,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
-          ref: heads/rc
+          ref: rc
 
       - name: install dependencies
         run: npm install
