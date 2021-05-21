@@ -47,7 +47,7 @@ jobs:
         run: |
           set_version=$(cat package.json | jq .version | xargs)
 
-          if [[ "$set_version" != "$" ]]; then
+          if [[ "$set_version" != "${{ steps.create_tags.outputs.package_version }}" ]]; then
             echo "Mismatched Release version"
             echo "package.json: $set_version"
             echo "release: $RELEASE_NAME"
