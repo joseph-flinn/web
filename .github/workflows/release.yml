@@ -139,23 +139,28 @@ jobs:
           npm install
           npm run dist:selfhost
 
-          echo -e "\nBuilding docker image"
-          docker --version
-          docker build -t bitwarden/web .
+          #echo -e "\nBuilding docker image"
+          #docker --version
+          #docker build -t bitwarden/web .
 
       - name: Tag rc branch
+        if: false
         run: docker tag bitwarden/web bitwarden/web:rc
 
       - name: Tag dev
+        if: false
         run: docker tag bitwarden/web bitwarden/web:dev
 
       - name: Tag beta
+        if: false
         run: docker tag bitwarden/web bitwarden/web:beta
 
       - name: Tag version
+        if: false
         run: docker tag bitwarden/web bitwarden/web:$PKG_VERSION
 
       - name: List docker images
+        if: false
         run: docker images
 
       - name: Push rc images
