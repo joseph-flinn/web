@@ -129,9 +129,11 @@ jobs:
         uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
 
       - name: Restore
+        if: false
         run: dotnet tool restore
 
       - name: Build
+        if: false
         run: |
           echo -e "# Building Web\n"
           echo "Building app"
@@ -139,9 +141,9 @@ jobs:
           npm install
           npm run dist:selfhost
 
-          #echo -e "\nBuilding docker image"
-          #docker --version
-          #docker build -t bitwarden/web .
+          echo -e "\nBuilding docker image"
+          docker --version
+          docker build -t bitwarden/web .
 
       - name: Tag rc branch
         if: false
