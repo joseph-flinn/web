@@ -28,8 +28,8 @@ jobs:
 
       - name: Get release version
         id: release-version
-        run:
-          if [[ ${{ github.event_name }} == "release" ]]; then
+        run: |
+          if [[ "${{ github.event_name }}" == "release" ]]; then
               echo "::set-output name=version::${{ github.event.release.tag_name }}"
           else
               echo "::set-output name=version::${{ github.event.inputs.release_version }}"
