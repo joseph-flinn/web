@@ -18,17 +18,15 @@ jobs:
         with:
           ref: rc
 
-      - name: install dependencies
-        run: npm install
-
-      - name: Setup git user
+      - name: Install and Build
         run: |
-          git config --global user.name "github-actions" 
-          git config --global user.email "no-reply@bitwarden.com"
+          npm install
+          npm run dist
 
-
-      - name: deploy GitHub Pages
-        run: npm run deploy
+      - name: Deploy GitHub Pages
+        uses: crazy-max/ghaction-github-pages@db4476a01402e1a7ce05f41832040eef16d14925  # 2.5.0
+        with:
+          target_branch: gh-pages
+          build_dir: build
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
